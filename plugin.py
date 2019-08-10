@@ -54,7 +54,7 @@ class Pastebin2cpaste(callbacks.Plugin):
             'url': 'https://pastebin.com/raw/%s'
         },
         'paste.fedoraproject.org': {
-            'regex': re.compile(r'([0-9a-zA-Z~]+)(?:/raw)?[.:?!,]*$'),
+            'regex': re.compile(r'([0-9a-zA-Z~-]+)(?:/raw)?[.:?!,]*$'),
             'url': 'https://paste.fedoraproject.org/paste/%s/raw'
         }
     }
