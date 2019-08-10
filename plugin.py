@@ -45,6 +45,20 @@ class Pastebin2cpaste(callbacks.Plugin):
     """Copies pastebin.com pastes to paste.centos.org using the cpaste command."""
     threaded = True
 
+    # Data for various source pastebins.  The key must be the lowercase domain
+    # name.  The regex must be compiled and should return the pastebin code as
+    # the first match.  The url will have the pastebin code substituted for %s.
+    pastebins = {
+        'pastebin.com': {
+            'regex': re.compile(r'([0-9a-zA-Z]+)[.:?!,]*$'),
+            'url': 'https://pastebin.com/raw/%s'
+        },
+        'paste.fedoraproject.org': {
+            'regex': re.compile(r'([0-9a-zA-Z~]+)(?:/raw)?[.:?!,]*$'),
+            'url': 'https://paste.fedoraproject.org/paste/%s/raw'
+        }
+    }
+
     def doPrivmsg(self, irc, msg):
         if ircmsgs.isCtcp(msg) and not ircmsgs.isAction(msg):
             return
@@ -55,9 +69,10 @@ class Pastebin2cpaste(callbacks.Plugin):
             else:
                 text = msg.args[1]
             for url in utils.web.httpUrlRe.findall(text):
-                if utils.web.getDomain(url) == "pastebin.com":
-                    pbCode = re.search('[0-9a-zA-Z]+$', url).group()
-                    newURL = "https://pastebin.com/raw/" + pbCode
+                pastebin = self.pastebins[utils.web.getDomain(url).lower()]
+                if pastebin:
+                    pbCode = pastebin['regex'].search(url).group(1)
+                    newURL = pastebin['url'] % pbCode
                     cmd = self.registryValue("curl") % newURL
                     cmd += "|" + self.registryValue("cpaste")
                     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
