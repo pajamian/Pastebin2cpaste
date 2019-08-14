@@ -56,8 +56,13 @@ class Pastebin2cpaste(callbacks.Plugin):
         'paste.fedoraproject.org': {
             'regex': re.compile(r'([0-9a-zA-Z~-]+)(?:/raw)?[.:?!,]*$'),
             'url': 'https://paste.fedoraproject.org/paste/%s/raw'
+        },
+        'hastebin.com': {
+            'regex': re.compile(r'/([a-z]+)(?:\.[a-z]+)?[.:?!,]*$'),
+            'url': 'https://hastebin.com/raw/%s'
         }
     }
+
 
     def doPrivmsg(self, irc, msg):
         if ircmsgs.isCtcp(msg) and not ircmsgs.isAction(msg):
