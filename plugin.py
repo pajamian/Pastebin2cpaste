@@ -62,7 +62,7 @@ class Pastebin2cpaste(callbacks.Plugin):
             'url': 'https://hastebin.com/raw/%s'
         },
         'www.irccloud.com': {
-            'regex': re.compile(r'/pastebin(?:/raw)/([0-9a-zA-Z]+)(?:/.*)?$'),
+            'regex': re.compile(r'/pastebin(?:/raw)/([0-9a-zA-Z]+)(?:/.*)?[.:?!,]*$'),
             'url': 'https://www.irccloud.com/pastebin/raw/%s'
         }
     }
