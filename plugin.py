@@ -60,6 +60,10 @@ class Pastebin2cpaste(callbacks.Plugin):
         'hastebin.com': {
             'regex': re.compile(r'/([a-z]+)(?:\.[a-z]+)?[.:?!,]*$'),
             'url': 'https://hastebin.com/raw/%s'
+        },
+        'www.irccloud.com': {
+            'regex': re.compile(r'/pastebin(?:/raw)/([0-9a-zA-Z]+)(?:/.*)?$'),
+            'url': 'https://www.irccloud.com/pastebin/raw/%s'
         }
     }
 
