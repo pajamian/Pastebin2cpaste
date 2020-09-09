@@ -78,6 +78,8 @@ class Pastebin2cpaste(callbacks.Plugin):
             else:
                 text = msg.args[1]
             for url in utils.web.httpUrlRe.findall(text):
+                if ! utils.web.getDomain(url).lower() in self.pastebins:
+                    continue
                 pastebin = self.pastebins[utils.web.getDomain(url).lower()]
                 if pastebin:
                     pbCode = pastebin['regex'].search(url).group(1)
