@@ -66,7 +66,7 @@ class Pastebin2cpaste(callbacks.Plugin):
             'url': 'https://www.irccloud.com/pastebin/raw/%s'
         },
         'termbin.com': {
-            'regex': re.compile(r'(0-9a-zA-Z)+)[.:?!,]*$'),
+            'regex': re.compile(r'([0-9a-zA-Z]+)[.:?!,]*$'),
             'url': 'https://termbin.com/%s'
         }
     }
