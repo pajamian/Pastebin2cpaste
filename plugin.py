@@ -53,10 +53,6 @@ class Pastebin2cpaste(callbacks.Plugin):
             'regex': re.compile(r'([0-9a-zA-Z]+)[.:?!,]*$'),
             'url': 'https://pastebin.com/raw/%s'
         },
-        'paste.fedoraproject.org': {
-            'regex': re.compile(r'([0-9a-zA-Z~-]+)(?:/raw)?[.:?!,]*$'),
-            'url': 'https://paste.fedoraproject.org/paste/%s/raw'
-        },
         'hastebin.com': {
             'regex': re.compile(r'/([a-z]+)(?:\.[a-z]+)?[.:?!,]*$'),
             'url': 'https://hastebin.com/raw/%s'
@@ -68,6 +64,10 @@ class Pastebin2cpaste(callbacks.Plugin):
         'termbin.com': {
             'regex': re.compile(r'([0-9a-zA-Z]+)[.:?!,]*$'),
             'url': 'https://termbin.com/%s'
+        },
+        'paste.debian.net': {
+            'regex': re.compile(r'([0-9]+)[.:?!,]*$'),
+            'url': 'https://paste.debian.net/plain/%s'
         }
     }
 
