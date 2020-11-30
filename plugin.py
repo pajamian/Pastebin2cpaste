@@ -54,7 +54,7 @@ class Pastebin2cpaste(callbacks.Plugin):
             'url': 'https://pastebin.com/raw/%s'
         },
         'hastebin.com': {
-            'regex': re.compile(r'/([a-z]+)(?:\.[a-z]+)?[.:?!,]*/?$'),
+            'regex': re.compile(r'/([a-z]+)(?:\.[a-z]+)?[.:?!,]*$'),
             'url': 'https://hastebin.com/raw/%s'
         },
         'www.irccloud.com': {
@@ -66,7 +66,7 @@ class Pastebin2cpaste(callbacks.Plugin):
             'url': 'https://termbin.com/%s'
         },
         'paste.debian.net': {
-            'regex': re.compile(r'([0-9]+)[.:?!,]*$'),
+            'regex': re.compile(r'([0-9]+)/?[.:?!,]*$'),
             'url': 'https://paste.debian.net/plain/%s'
         }
     }
