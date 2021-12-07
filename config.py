@@ -48,7 +48,7 @@ def configure(advanced):
     curl = expect("""Curl Command (%s will be replaced by the URL):""",
                   [], default="""curl '%s'""")
     cpaste = expect("""Cpaste Command:""", [],
-                    default="""cpaste -a "CentOS Project Repaste Service" -p -s -e 1440""")
+                    default="""rpaste -x 1day < /etc/os-release 2>/dev/null | sed -n -E 's/^Paste URL: +//p'""")
     Pastebin2cpaste.curl.setValue(curl)
     Pastebin2cpaste.cpaste.setValue(cpaste)
 
